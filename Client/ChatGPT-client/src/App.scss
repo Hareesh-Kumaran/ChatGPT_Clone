@@ -1,0 +1,103 @@
+@import "https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap";
+* {
+  font-family: "Comfortaa", cursive;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background-color: #343541;
+  aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 250px;
+    background-color: #202123;
+
+    .new-chat-button {
+      margin-top: 5%;
+      padding: 3% 0;
+      width: 95%;
+      font-size: 12px;
+      align-self: center;
+      border: 0.1px solid rgb(148, 148, 148);
+      border-radius: 5px;
+      background-color: transparent;
+      color: white;
+      &:hover {
+        cursor: pointer;
+        background-color: #2d2d2d;
+        transition: 0.5s ease-out;
+      }
+    }
+
+    .chat-history-wrapper {
+      height: 100%;
+      background-color: rgba(221, 209, 209, 0.118);
+    }
+
+    .aside-footer {
+      p {
+        text-align: center;
+        color: rgb(144, 144, 144);
+        font-size: 13px;
+      }
+    }
+  }
+  .main-section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .input-container {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      .control-wrapper {
+        width: 60%;
+        border-radius: 10px;
+        background-color: #40414f;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        input {
+          border: none;
+          border-radius: 10px;
+          width: 95%;
+          padding: 15px;
+          color: rgb(136, 136, 136);
+          background-color: #40414f;
+          &:focus {
+            outline: none;
+          }
+          &::placeholder {
+            color: rgb(142, 142, 142);
+          }
+        }
+
+        button {
+          width: 5%;
+          bottom: 25%;
+          display: flex;
+          justify-content: center;
+          background-color: transparent;
+          border: none;
+          color: rgb(143, 143, 143);
+          
+          &:hover{
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
