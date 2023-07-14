@@ -7,7 +7,9 @@ import Aside from "./Component/Aside";
 import { Triangle } from "react-loader-spinner";
 import { motion } from "framer-motion";
 
+
 function App() {
+
   const [input, setInput] = useState("");
   const [botMessage, setBotMessage] = useState(null);
   const [Chat, setChat] = useState([]);
@@ -47,9 +49,12 @@ function App() {
     setChat(obj.chat);
   };
 
+
   const handleSubmit = async () => {
+   
+    console.log("ENV", import.meta.env.VITE_ENDPOINT);
     setIsLoading(true);
-    const response = await axios.post("http://localhost:7000/", {
+    const response = await axios.post(import.meta.env.VITE_ENDPOINT, {
       userQuery: input,
     });
     setBotMessage(response.data.data);
@@ -83,7 +88,7 @@ function App() {
     }
   }, [botMessage, currentTitle]);
 
-  console.log("History:", history);
+  
   return (
     <div className="App">
         <Aside
@@ -105,7 +110,11 @@ function App() {
             Chat.map((chatObject) => (
               <motion.div
                 className="conversation"
-                animate={{ y: -20 }}
+                initial={{
+                  opacity:0.5,
+                  x:-50
+                }}
+                animate={{opacity:1,x:0 }}
                 transition={{ ease: "easeOut", duration: 1.5 }}
               >
                 <div className="logo-wrapper">
@@ -154,17 +163,8 @@ function App() {
               onChange={(e) => setInput(e.target.value)}
             />
 
-            <button onClick={handleSubmit}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                fill="currentColor"
-                class="bi bi-caret-right-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-              </svg>
+            <button onClick={()=>handleSubmit()}>
+              {">>"}
             </button>
           </div>
           {isloading && (
