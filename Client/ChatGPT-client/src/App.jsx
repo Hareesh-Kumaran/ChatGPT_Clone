@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 
 axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT;
 // axios.defaults.baseURL = "http://localhost:7000";
+
 function App() {
-  
   const [input, setInput] = useState("");
   const [botMessage, setBotMessage] = useState(null);
   const [Chat, setChat] = useState([]);
@@ -50,12 +50,10 @@ function App() {
     setChat(obj.chat);
   };
 
-
   const handleSubmit = async () => {
-   
     console.log("ENV", import.meta.env.VITE_ENDPOINT);
     setIsLoading(true);
-    const response = await axios.post('/api', {
+    const response = await axios.post("/api", {
       userQuery: input,
     });
     setBotMessage(response.data.data);
@@ -89,16 +87,15 @@ function App() {
     }
   }, [botMessage, currentTitle]);
 
-  
   return (
     <div className="App">
-        <Aside
-          clearChat={clearChat}
-          history={history}
-          handleHistorySelection={handleHistorySelection}
-          showSidebar={showSidebar}
-        />
-   
+      <Aside
+        clearChat={clearChat}
+        history={history}
+        handleHistorySelection={handleHistorySelection}
+        showSidebar={showSidebar}
+      />
+
       <section className="main-section">
         <button
           className="side-bar-controller"
@@ -112,10 +109,10 @@ function App() {
               <motion.div
                 className="conversation"
                 initial={{
-                  opacity:0.5,
-                  x:-50
+                  opacity: 0.5,
+                  x: -50,
                 }}
-                animate={{opacity:1,x:0 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ ease: "easeOut", duration: 1.5 }}
               >
                 <div className="logo-wrapper">
@@ -150,7 +147,7 @@ function App() {
                 animate={{ y: [-20, 0], opacity: 1 }}
                 transition={{ ease: "easeIn", duration: 1 }}
               >
-               unlock a world of infinite possibilities
+                unlock a world of infinite possibilities
               </motion.p>
             </div>
           )}
@@ -164,9 +161,7 @@ function App() {
               onChange={(e) => setInput(e.target.value)}
             />
 
-            <button onClick={()=>handleSubmit()}>
-              {">>"}
-            </button>
+            <button onClick={() => handleSubmit()}>{">>"}</button>
           </div>
           {isloading && (
             <Triangle
