@@ -16,7 +16,7 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
-app.post("/", async (req, res) => {
+app.post("/api", async (req, res) => {
   try {
     const userQuery=req.body.userQuery;
 
@@ -40,3 +40,5 @@ if(process.env.LocalPortNumber)
 app.listen(7000, () => {
   console.log("Server is running @ 7000");
 });
+
+export default app;
