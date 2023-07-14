@@ -17,6 +17,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 app.post("/api", async (req, res) => {
+  console.log("server-in")
   try {
     const userQuery=req.body.userQuery;
 
@@ -35,7 +36,9 @@ app.post("/api", async (req, res) => {
 });
 
 
-
+app.get('/api',(req,res)=>{
+  res.send({"message":"Working"});
+})
 
 app.listen(7000, () => {
   console.log("Server is running @ 7000");

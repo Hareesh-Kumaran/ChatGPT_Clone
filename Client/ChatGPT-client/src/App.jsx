@@ -8,7 +8,7 @@ import { Triangle } from "react-loader-spinner";
 import { motion } from "framer-motion";
 
 axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT;
-
+// axios.defaults.baseURL = "http://localhost:7000";
 function App() {
   
   const [input, setInput] = useState("");
