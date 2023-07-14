@@ -36,9 +36,10 @@ app.post("/api", async (req, res) => {
 
 
 
-if(process.env.LocalPortNumber)
+
 app.listen(7000, () => {
   console.log("Server is running @ 7000");
 });
+
 
 export default app;
