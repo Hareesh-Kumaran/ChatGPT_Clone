@@ -7,9 +7,10 @@ import Aside from "./Component/Aside";
 import { Triangle } from "react-loader-spinner";
 import { motion } from "framer-motion";
 
+axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT;
 
 function App() {
-
+  
   const [input, setInput] = useState("");
   const [botMessage, setBotMessage] = useState(null);
   const [Chat, setChat] = useState([]);
@@ -54,7 +55,7 @@ function App() {
    
     console.log("ENV", import.meta.env.VITE_ENDPOINT);
     setIsLoading(true);
-    const response = await axios.post(import.meta.env.VITE_ENDPOINT, {
+    const response = await axios.post('/api', {
       userQuery: input,
     });
     setBotMessage(response.data.data);
